@@ -1,0 +1,25 @@
+body{
+    margin: 2px;
+}
+
+.nav, .header, .principal, .productos{
+    border: 2px solid
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-opciones{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.principal{
+    display: flex;
+    gap: 100px;
+}
