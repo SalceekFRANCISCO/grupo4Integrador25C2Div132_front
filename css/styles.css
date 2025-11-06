@@ -6,20 +6,30 @@ body{
     border: 2px solid
 }
 
+
 .header{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 .lista-opciones{
-    list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 10px;
+    width: 20vw;
+    font-size: 2vh;
 }
 
 .principal{
     display: flex;
     gap: 100px;
+}
+
+.logo-tienda{
+    height: 10vh;
+}
+
+.busqueda {
+    height: 6vh;
 }
