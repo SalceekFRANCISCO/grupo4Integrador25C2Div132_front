@@ -4,8 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla de productos de la tienda de Star Wars</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/logo-tienda.png">
 </head>
 <body>
-    
+    <header class="header">
+        <div>
+            <img src="img/logo-tienda.png" alt="logo.jpg" class="logo-tienda">
+        </div>
+        <nav class="nav">
+            <div class="lista-opciones">
+                <a href="login.html">Bienvenida</a>
+                <a href="index.html">Principal</a>
+                <a href="carrito.html">Carrito</a>
+                <a href="ticket.html">Ticket</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h1>Lista de productos</h1>
+        <hr>
+            <div class="busqueda">
+                <input type="text" placeholder="¿Qué estas buscando?">
+            </div>
+
+        <div id="contenedor-productos"></div>
+    </main>
+    <script>
+                let contenedorProductos = document.getElementById("contenedor-productos");
+        const url = "http://localhost:3000/products"
+
+        async function obtenerProductos() {
+            try {
+                let respuesta = await fetch(url)
+                let data = await respuesta.json();
+                console.log(data);
+                let productos = data.payload;
+                mostrarProductos(productos);
+            } catch(error) {
+                console.error(error);
+            }
+                            
+        }
+
+        function mostrarProductos(array) {
+            console.table(array);
+            console.log(array)
+
+            let htmlProducto = "";
+
+            array.forEach(producto => {
+                htmlProducto += `
+                <div class = "card-producto">
+                    <img src="${producto.img_url}" alt="${producto.nombre}">
+                    <h5>${producto.nombre}</h5>
+                    <p>Id: ${producto.id}</p>
+                    <p> $${producto.precio}</p>
+                </div>`;
+                
+            });
+        console.log(htmlProducto);
+        contenedorProductos.innerHTML = htmlProducto;
+        }
+
+        function init() {
+            obtenerProductos();
+        }
+
+        init();
+    </script>
 </body>
 </html>
