@@ -17,6 +17,12 @@
     display: block;
 }
 
+.form-login > form {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
 .input-login{
     width: 20vw;
     height: 4vh;
@@ -25,8 +31,11 @@
 
 .boton-comenzar{
     width: 20vw;
-    height: 6vh;
+    height: 8vh;
     font-size: 36px;
     color: aqua;
     background-color: blueviolet;
+    border-radius: 10px;
+    font-family: 'Orbitron';
+    font-size: 5vh;
 }
