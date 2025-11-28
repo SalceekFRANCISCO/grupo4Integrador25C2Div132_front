@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/styles-general.css">
     <link rel="icon" type="image/png" href="img/logo-tienda.png">
 </head>
-<body>
+<body class="body-principal">
     <header class="header">
         <div>
             <img src="img/logo-tienda.png" alt="logo.jpg" class="logo-tienda">
@@ -21,18 +21,23 @@
             </div>
         </nav>
     </header>
-    <main>
-        <h1>Lista de productos</h1>
-        <hr>
-            <div class="busqueda">
-                <input type="text" placeholder="¿Qué estas buscando?">
+    <nav>
+        <h1 class="texto-lista-productos">Nuestros productos</h1>
+        <section class="productos-nav">
+            <div class="boton-ordenar">
+                <button class="boton-ordenar">Ordenar por Nombre (A-Z)</button>
             </div>
-
-        <div id="contenedor-productos"></div>
-    </main>
+        
+            <div class="boton-filtrar">
+                <button class="boton-ordenar">setso 2</button>
+                <button class="boton-ordenar">setso 3</button>
+            </div>
+       </section>
+    </nav>
+    
     <script>
-                let contenedorProductos = document.getElementById("contenedor-productos");
-        const url = "http://localhost:3000/products"
+        let contenedorProductos = document.getElementById("contenedor-productos");
+        const url = "http://localhost:3000/productos"
 
         async function obtenerProductos() {
             try {

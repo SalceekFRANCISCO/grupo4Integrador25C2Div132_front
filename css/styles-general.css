@@ -11,6 +11,11 @@ body{
 }
 **/
 
+.body-principal{
+    background-image: url("../img/fondo-principal.jpg");
+    background-size: cover;
+}
+
 .header{
     display: flex;
     justify-content: space-around;
@@ -38,4 +43,27 @@ body{
 
 .busqueda {
     height: 6vh;
+}
+
+.texto-lista-productos{
+    display: flex;
+    justify-content: center;
+    font-family: 'Orbitron';
+}
+
+.productos-nav{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;
+}
+
+.boton-ordenar{
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    color: gold;
+    background-color: rgb(77, 75, 75);
+}
+
+.boton-ordenar:hover{
+    cursor: cell;
 }
