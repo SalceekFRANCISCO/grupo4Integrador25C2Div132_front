@@ -11,6 +11,14 @@ body{
     justify-content: center;
 }
 
+/* .nav a:visited {
+    color: red;
+    
+} */
+
+.nav a {
+    color: gold;
+}
 
 .body-principal{
     background-image: url("../img/fondo-principal.jpg");
@@ -21,8 +29,16 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-image: url("../img/fondo-tienda.jpg");
+    background-image: url("../img/space-fondo-nav.jpg");
     background-size: cover;
+}
+
+.body-ticket{
+    background-image: url("../img/dart-vader-sad.jpg");
+}
+
+.header-ticket{
+    background-image: url("../img/dart-vader-sad.jpg");
 }
 
 .lista-opciones{
@@ -56,7 +72,7 @@ body{
 .productos-nav{
     display: flex;
     flex-direction: row; 
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .boton-ordenar{
@@ -64,6 +80,7 @@ body{
     font-family: 'Orbitron', sans-serif;
     color: gold;
     background-color: rgb(77, 75, 75);
+    font-size: 3vh;
 }
 
 .boton-ordenar:hover{
