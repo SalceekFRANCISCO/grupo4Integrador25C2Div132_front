@@ -21,7 +21,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    /* background-image: url("../img/fondo-tienda.jpg"); */
+    background-image: url("../img/fondo-tienda.jpg");
     background-size: cover;
 }
 
