@@ -54,7 +54,24 @@ function mostrarCantidad(producto) {
     }
 }
 
-function ordenarProductos(array, parametro){
+function ordenarProductos(array, parametro, direccion){
+    let productosOrdenados = [...array];
+
+    productosOrdenados.sort((a, b) => {
+        let valorA = a[parametro];
+        let valorB = b[parametro];
+        let comparacion = 0;
+
+        if (valorA > valorB) {
+            comparacion = 1;
+        } else {
+            comparacion = -1;
+        }
+
+        return direccion === "asc" ? comparacion : comparacion * -1;
+
+    });
+/*
     switch (parametro) {
         case 1: {
                 for(let i = 0; i < array.length; i++) {
@@ -83,17 +100,30 @@ function ordenarProductos(array, parametro){
             break;
         }
     }
+*/
     console.log(array);
-    mostrarProductos(array)
+    mostrarProductos(productosOrdenados);
 }
 
 function configurarEventos() {
+    /*
     let ordenarSelect = document.getElementById("ordenar-select");
     ordenarSelect.addEventListener('change', (event) => {
         console.log(productos);
         ordenarProductos(productos, parseInt(event.target.value));
         });
-}
+*/
+    let propiedadSelect = document.getElementById("propiedad-select");
+    let direccionSelect = document.getElementById("direccion-select");
+
+    const aplicarOrden = () => {
+        const propiedad = propiedadSelect.value;
+        const direccion = direccionSelect.value;
+        ordenarProductos(productos, propiedad, direccion);
+    }
+    propiedadSelect.addEventListener('change', aplicarOrden);
+    direccionSelect.addEventListener('change', aplicarOrden)
+}   
 
 function init() {
     obtenerProductos();
