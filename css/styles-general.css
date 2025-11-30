@@ -25,20 +25,25 @@ body{
     background-size: cover;
 }
 
+
 .header{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-image: url("../img/space-fondo-nav.jpg");
+    background-image: url("../img/space-fondo-nav.jpg");  /*fonde del nav */
     background-size: cover;
 }
 
 .body-ticket{
-    background-image: url("../img/dart-vader-sad.jpg");
+    background-image: url("../img/dart-vader-sad.jpg"); /*fonde del nav de ticket */
 }
 
 .header-ticket{
-    background-image: url("../img/dart-vader-sad.jpg");
+    background-image: url("../img/dart-vader-sad.jpg"); /*fonde del main de ticket */
+}
+
+.boton-ordenar:hover{
+    cursor: url("../img/darth_vader_cursor_32.png") 48 48, auto; /*cursor de dart vader */
 }
 
 .lista-opciones{
@@ -83,17 +88,12 @@ body{
     font-size: 3vh;
 }
 
-.boton-ordenar:hover{
-    cursor: url("../img/darth_vader_cursor_32.png") 48 48, auto;
-}
-
 .productos-contenedor{
     display: flex;
     gap: 2vh;
     margin-top: 6vh;
     flex-wrap: wrap;
 }
-
 
 .card-producto{
     border: 2px solid;
