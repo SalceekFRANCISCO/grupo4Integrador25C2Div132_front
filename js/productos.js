@@ -26,16 +26,32 @@ function mostrarProductos(array) {
     let htmlProducto = "";
 
     array.forEach(producto => {
+        cantidad = mostrarCantidad(producto);
         htmlProducto += `
         <div class = "card-producto">
-            <img src="../img/dart-vader-sad.jpg" alt="${producto.nombre}">
+            <img src=".${producto.img_url}" alt="${producto.nombre}">
             <h5>${producto.nombre}</h5>
-            <p> $${producto.precio}</p>
+            <p>$${producto.precio}</p>
+            <p>${cantidad}</p>
         </div>`;
-        
     });
     console.log(htmlProducto);
     contenedorProductos.innerHTML = htmlProducto;
+}
+
+function mostrarCantidad(producto) {
+    if (producto.stock > 5) {
+        return "Disponible";
+    }
+    else {
+        if (producto.stock > 0) {
+            return "Últimas unidades disponibles"
+        }
+        else {
+            return `AGOTADO`;
+        }
+        
+    }
 }
 
 function init() {
