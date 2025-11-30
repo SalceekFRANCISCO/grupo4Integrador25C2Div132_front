@@ -13,7 +13,7 @@
         <nav class="nav">
             <div class="lista-opciones">
                 <a href="login.html">Bienvenida</a>
-                <a href="productos.html">Productos</a>
+                <a class="activo" href="productos.html">Productos</a>
                 <div>
                     <img src="img/logo-tienda.png" alt="logo.jpg" class="logo-tienda">
                 </div>
@@ -26,11 +26,19 @@
         <h1 class="texto-lista-productos">Nuestros productos</h1>
         <section class="productos-nav">
             <div class="boton-ordenar">
-                <button class="boton-ordenar">Ordenar por Nombre (A-Z)</button>
+                <label class="boton-ordenar">Ordenar por</label>
+                <select class="boton-ordenar" id="ordenar-select">
+                    <option value=1>Nombre (A-Z)</option>
+                    <option value=-1>Precio (Menor a mayor)</option>
+                </select>
             </div>
         
             <div class="boton-filtrar">
-                <button class="boton-ordenar">Filtrar por Producto</button>
+                <label class="boton-ordenar" for="categoryProd">Filtrar por</label>
+                <select class="boton-ordenar" name="categoria">
+                    <option onchange="ordenarProductos(-1)">Muñecos</option>
+                    <option onchange="ordenarProductos(1)">Sables</option>
+                </select>
             </div>
        </section>
     </nav>
