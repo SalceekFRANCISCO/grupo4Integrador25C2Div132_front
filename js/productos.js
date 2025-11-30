@@ -28,7 +28,7 @@ function mostrarProductos(array) {
     array.forEach(producto => {
         htmlProducto += `
         <div class = "card-producto">
-            <img src="${producto.img_url}" alt="${producto.nombre}">
+            <img src="../img/dart-vader-sad.jpg" alt="${producto.nombre}">
             <h5>${producto.nombre}</h5>
             <p> $${producto.precio}</p>
         </div>`;

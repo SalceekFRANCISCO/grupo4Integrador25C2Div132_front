@@ -106,12 +106,14 @@ body{
     gap: 1vh;
     border-radius: 8px;
     background-color: rgb(46, 45, 45);
-    height: 260px;
+    height: 342px;
 }
 
 .card-producto img{
-    width: 100px;
-    height: 100px;
+    padding-top: 15px;
+    width: 206px;
+    height: 282px;
+    border-radius: 8px;
 }
 
 .card-producto h5{
