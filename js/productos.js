@@ -9,6 +9,7 @@ async function obtenerProductos() {
 
         //console.log(contenedorProductos);
         productos = data.payload;
+        configurarEventos();
         mostrarProductos(productos);
 
     } catch(error) {
@@ -55,7 +56,7 @@ function mostrarCantidad(producto) {
 }
 
 function ordenarProductos(array, parametro, direccion){
-    let productosOrdenados = [...array];
+    const productosOrdenados = [...array];
 
     productosOrdenados.sort((a, b) => {
         let valorA = a[parametro];
@@ -102,7 +103,22 @@ function ordenarProductos(array, parametro, direccion){
     }
 */
     console.log(array);
-    mostrarProductos(productosOrdenados);
+    return productosOrdenados;
+}
+
+function filtrarProductos(array, propiedad) {
+    let productosFiltrados = [];
+    if (propiedad === "todos") {
+        productosFiltrados = [...array];
+    }
+    else {
+        array.forEach (producto => {
+            if (producto.categoria === propiedad) {
+                productosFiltrados.push(producto);
+            }
+        })
+    }
+    return productosFiltrados;
 }
 
 function configurarEventos() {
@@ -115,19 +131,25 @@ function configurarEventos() {
 */
     let propiedadSelect = document.getElementById("propiedad-select");
     let direccionSelect = document.getElementById("direccion-select");
+    let filtroSelect = document.getElementById("propiedad-filtro");
+    console.log(filtroSelect.value);
 
-    const aplicarOrden = () => {
+    const actualizarProductosMostrados = () => {
         const propiedad = propiedadSelect.value;
         const direccion = direccionSelect.value;
-        ordenarProductos(productos, propiedad, direccion);
+        const filtro = filtroSelect.value;
+        let productosAcomodados = [...productos];
+        productosAcomodados = filtrarProductos(productosAcomodados, filtro);
+        productosAcomodados = ordenarProductos(productosAcomodados, propiedad, direccion);
+        mostrarProductos(productosAcomodados);
     }
-    propiedadSelect.addEventListener('change', aplicarOrden);
-    direccionSelect.addEventListener('change', aplicarOrden)
+    propiedadSelect.addEventListener('change', actualizarProductosMostrados);
+    direccionSelect.addEventListener('change', actualizarProductosMostrados);
+    filtroSelect.addEventListener('change', actualizarProductosMostrados);
 }   
 
 function init() {
     obtenerProductos();
-    configurarEventos();
 }
 
 init();
