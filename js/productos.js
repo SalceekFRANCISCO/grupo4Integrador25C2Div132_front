@@ -1,9 +1,6 @@
 let contenedorProductos = document.getElementById("contenedor-productos");
-let contenedorCarrito = document.getElementById("carrito-productos");
+// let contenedorCarrito = document.getElementById("carrito-productos");
 
-console.log(contenedorProductos);
-console.log("***************************");
-console.log(contenedorCarrito);
 
 const url = "http://localhost:3000/api/productos";
 
@@ -28,10 +25,7 @@ async function obtenerProductos() {
 }
 
 function mostrarProductos(array) {
-//    console.table(array);
-//    console.log(array)
     let htmlProducto = "";
-//    ordenarProductos(array, 1);
 
     array.forEach((producto) => {
         cantidad = mostrarCantidad(producto);
@@ -157,51 +151,64 @@ function configurarEventos() {
 }   
 
 function agregarAlCarrito(id) {
-    let productoEncontrado = productos.find(producto => producto.id == id)
-    //validar si ya esta qsy
-    carrito.push(productoEncontrado);
-    console.table(carrito);
-    mostrarCarrito();
-    
-    
+    const carritoActualJSON = localStorage.getItem('carrito') || '[]';
+    const carritoExistente = JSON.parse(carritoActualJSON);
+
+    let productoEncontrado = productos.find(producto => producto.id == id);
+
+    carritoExistente.push(productoEncontrado);
+
+
+    const carritoLocalS = JSON.stringify(carritoExistente);
+    localStorage.setItem("carrito",carritoLocalS);
+
+    // let carrito = JSON.parse(carritoActualJSON);
+
+    // const carritoActualizadoJSON = JSON.stringify(carrito);
+
+    // localStorage.setItem('carrito', carritoActualizadoJSON);
+
+    // localStorage.clear();
+    // console.table(carrito);
+    // mostrarCarrito();
 }
 
 
-function mostrarCarrito() {
-    let cantidadCarrito = carrito.length;
+// function mostrarCarrito() {
+//     let cantidadCarrito = carrito.length;
 
-    if(cantidadCarrito === 0){
-        console.log("carrito vacio");
+//     if(cantidadCarrito === 0){
+//         console.log("carrito vacio");
         
-    }
-    else{
-        // console.log(carrito);
+//     }
+//     else{
+//         // console.log(carrito);
         
-        let carritoCargado = "<ul class=listaCarrito> ";
+//         let carritoCargado = "<ul class=listaCarrito> ";
     
-        carritoCargado +=`<h2 class="carrito-titulo">Carrito</h2>`
-        carrito.forEach((producto) => {
-                carritoCargado +=
-                `<div class="sos">
-                    <li class="bloque-item">
-                    <p class="nombre-item">${producto.nombre} -- $${producto.precio}</p>
-                    </li>
-                </div>`
-        });
+//         carritoCargado +=`<h2 class="carrito-titulo">Carrito</h2>`
+//         carrito.forEach((producto) => {
+//                 carritoCargado +=
+//                 `<div class="sos">
+//                     <li class="bloque-item">
+//                     <p class="nombre-item">${producto.nombre} -- $${producto.precio}</p>
+//                     </li>
+//                 </div>`
+//         });
 
-        // carritoCargado += `<h3 class="total">Total: $ ${total}</p> </h3>`;
-        carritoCargado += `</ul>`;
-        // carritoCargado += `<button class="botonEliminar" onclick="vaciarCarritoCompleto()">Vaciar el carrito</button>`;
-        // contenedorCarrito.innerHTML = cantidadProductosCarrito;
-        console.log(contenedorCarrito);
-        console.log(carritoCargado);
+//         // carritoCargado += `<h3 class="total">Total: $ ${total}</p> </h3>`;
+//         carritoCargado += `</ul>`;
+//         // carritoCargado += `<button class="botonEliminar" onclick="vaciarCarritoCompleto()">Vaciar el carrito</button>`;
+//         // contenedorCarrito.innerHTML = cantidadProductosCarrito;
+//         console.log(contenedorCarrito);
+//         console.log(carritoCargado);
         
         
-        contenedorCarrito.innerHTML = carritoCargado;
-    }
+//         contenedorCarrito.innerHTML = carritoCargado;
+//     }
 
 
-}
+// }
 
 
 
