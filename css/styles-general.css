@@ -23,6 +23,7 @@ body{
 .body-principal{
     background-image: url("../img/fondo-principal.jpg");
     background-size: cover;
+    height: 100vh;
 }
 
 
@@ -138,6 +139,32 @@ body{
     border: 1px solid;
 }
 
-.bloque-item h3{
-    text-align: end;
+.carrito-producto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productos-carrito{
+    display: flex;
+    list-style: none;
+}
+
+.lista-carrito{
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.productos-carrito li{
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    gap: 26px;
+}
+
+.botones{
+    display: flex;
 }

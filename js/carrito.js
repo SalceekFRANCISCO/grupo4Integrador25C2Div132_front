@@ -10,19 +10,23 @@ function obtenerCarrito() {
 
     carrito.forEach((producto, indice) => {
         carritoCargado +=
-        `<div class="sos">
-            <li class="bloque-item">
-            <p class="nombre-item">${producto.nombre} -- $${producto.precio}</p>
-            <button onclick="eliminarProducto(${(indice)})" >eliminar</button>
-            <button >cantidad +</button>
+        `<div class="productos-carrito" >
+            <li>
+                <div>
+                    <p>${producto.nombre} -- $${producto.precio}</p>
+                    </div>
+                    <div class="botones">
+                    <button onclick="restarProducto(${(producto.id)})"> - </>
+                    <button>${producto.cantidad}</button>
+                    <button onclick="sumarProducto(${(producto.id)})" > + </>
+                    <button onclick="eliminarProducto(${(indice)})" >eliminar</button>
+                    <p>TOTAL : ${producto.total}</p>
+                </div>
             </li>
         </div>`
     });
 
     carritoCargado += `</ul>`;
-    // carritoCargado += `<button class="botonEliminar" onclick="vaciarCarritoCompleto()">Vaciar el carrito</button>`;
-    // contenedorCarrito.innerHTML = cantidadProductosCarrito;
-    
     
     contenedorCarrito.innerHTML = carritoCargado;
 }
@@ -43,7 +47,55 @@ function eliminarProducto(indice){
     obtenerCarrito();
 }
 
+function sumarProducto(id){
+    // Traer el carrito del storage
+    const carritoActualJSON = localStorage.getItem('carrito') || '[]';
+    // parseo
+    const carritoExistente = JSON.parse(carritoActualJSON);
+    // buscar el producto
+    let productoEncontrado = carritoExistente.find(producto => producto.id == id);
+    // sumar la cantidad
+    if(productoEncontrado){
+        productoEncontrado.cantidad += 1;
+        productoEncontrado.total = productoEncontrado.cantidad * productoEncontrado.precio;
+        
+    }
+    // guardar el carrito en el localStorage
+    const carritoLocalS = JSON.stringify(carritoExistente);
+    localStorage.setItem("carrito",carritoLocalS);
+    obtenerCarrito();
+}
 
+function restarProducto(id){
+    // Traer el carrito del storage
+    const carritoActualJSON = localStorage.getItem('carrito') || '[]';
+    // parseo
+    const carritoExistente = JSON.parse(carritoActualJSON);
+    // buscar el producto
+    let productoEncontrado = carritoExistente.find(producto => producto.id == id);
+
+    let indiceEncontrado = carritoExistente.findIndex(producto => producto.id == id);
+    // restar la cantidad
+
+    
+    if(productoEncontrado){
+        productoEncontrado.cantidad -= 1;
+
+        if(productoEncontrado.cantidad <= 0){
+            eliminarProducto(indiceEncontrado);
+            return;
+        }
+        else{
+            productoEncontrado.total = productoEncontrado.cantidad * productoEncontrado.precio;
+        }
+    }
+    // validar que no se pueda poner negativa
+    // guardar el carrito en el localStorage
+    const carritoLocalS = JSON.stringify(carritoExistente);
+    localStorage.setItem("carrito",carritoLocalS);
+    obtenerCarrito();
+
+}
 
 function init() {
     obtenerCarrito();

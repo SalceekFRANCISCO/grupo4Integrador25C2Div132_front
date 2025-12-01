@@ -153,53 +153,30 @@ function configurarEventos() {
 function agregarAlCarrito(id) {
     const carritoActualJSON = localStorage.getItem('carrito') || '[]';
     const carritoExistente = JSON.parse(carritoActualJSON);
-
-    let productoEncontrado = productos.find(producto => producto.id == id);
-
-    carritoExistente.push(productoEncontrado);
-
-
+    
+    let productoEncontrado = carritoExistente.find(producto => producto.id == id);
+    
+    if(productoEncontrado){
+        
+        productoEncontrado.cantidad = (productoEncontrado.cantidad || 0) + 1;
+        productoEncontrado.total = (productoEncontrado.total || productoEncontrado.precio) + productoEncontrado.precio;
+    }
+    else{
+        
+        let productoNuevo = productos.find(producto => producto.id == id); //esto es para encontrar el producto en el carrito con rows
+        
+        productoNuevo.cantidad = 1;
+        carritoExistente.push(productoNuevo);
+        
+    }
+    
     const carritoLocalS = JSON.stringify(carritoExistente);
     localStorage.setItem("carrito",carritoLocalS);
+    // localStorage.clear()
 }
-
-// esta no debe estar aqui
-// function mostrarCarrito(){
-//     let cantidadCarrito = carritoPersonal.length;
-
-//     if(cantidadCarrito === 0){
-//         vaciarCarrito();
-//     }
-//     else{
-//         let total = calcularTotal(carritoPersonal);
-//         let cantidadProductosCarrito = `<p> Carrito:${cantidadCarrito} Productos</p>`;
-//         let carritoCargado = "<ul class=listaCarrito> ";
-
-//         carritoCargado +=`<h2 class="carrito-titulo">Carrito</h2>`
-//         carritoPersonal.forEach((fruta,indice) => {
-//                 carritoCargado +=
-//                 `<div class="sos">
-//                     <li class="bloque-item">
-//                     <p class="nombre-item">${fruta.nombre}-- $${fruta.precio}</p>
-//                     <button class="botonEliminar" onclick="eliminarFruta(${(indice)})">Eliminar</button>
-//                     </li>
-//                 </div>`
-//         });
-
-//         carritoCargado += `<h3 class="total">Total: $ ${total}</p> </h3>`;
-//         carritoCargado += `<button class="botonEliminar" onclick="vaciarCarritoCompleto()">Vaciar el carrito</button>`;
-//         carritocantidad.innerHTML = cantidadProductosCarrito;
-        
-//         carrito.innerHTML = carritoCargado;
-//     }
-    
-// };
-
-
 
 function init() {
     obtenerProductos();
-    // mostrarCarrito();
 }
 
 init();
