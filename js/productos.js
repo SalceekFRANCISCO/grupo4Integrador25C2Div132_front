@@ -48,7 +48,7 @@ function mostrarCantidad(producto) {
     }
     else {
         if (producto.stock > 0) {
-            return "Últimas unidades disponibles"
+            return "Últimas unidades"
         }
         else {
             return `AGOTADO`;
@@ -167,6 +167,7 @@ function agregarAlCarrito(id) {
         
         productoNuevo.cantidad = 1;
         carritoExistente.push(productoNuevo);
+        productoNuevo.total = productoNuevo.precio;
         
     }
     
