@@ -1,26 +1,6 @@
 let contenedorProductos = document.getElementById("contenedor-productos");
 // let contenedorCarrito = document.getElementById("carrito-productos");
 
-const preferedColorScheme = window.matchMedia("(prefers-color-scheme: dark").matches ? "dark" : "light";
-// matchMedia toma el color del sistema operativo del usuario. Para ya agarrar por defecto el que él use.
-const slider = document.getElementById("slider");
-
-
-const setTheme = (theme) => {
-    document.documentElement.setAttribute("data-theme", theme);
-    //documentElemennt es la parte raíz del documento. En este caso, el documento HTMl.
-    localStorage.setItem("theme", theme);
-}
-
-setTheme(localStorage.getItem("theme") || preferedColorScheme);
-
-const cambiarTema = () => {
-    let switchTheme = localStorage.getItem("theme") === "dark" ? "light" : "dark";
-    setTheme(switchTheme);
-
-}
-
-
 const url = "http://localhost:3000/api/productos";
 
 let productos = [];
@@ -167,7 +147,6 @@ function configurarEventos() {
     propiedadSelect.addEventListener('change', actualizarProductosMostrados);
     direccionSelect.addEventListener('change', actualizarProductosMostrados);
     filtroSelect.addEventListener('change', actualizarProductosMostrados);
-    slider.addEventListener("click", cambiarTema);
 }   
 
 function agregarAlCarrito(id) {

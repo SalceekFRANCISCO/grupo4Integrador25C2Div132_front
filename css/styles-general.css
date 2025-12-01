@@ -10,14 +10,18 @@ body{
     --primary: #2a83d6;
     --background: #ffffff;
     --text: #2a83d6;
-    --imagen: url("../img/imagen-fondo-claro.jpg");
+    --imagen: url("../img/fondos/imagen-fondo-claro.jpg");
+    --nav: green;
+    --fondo-nav: url("../img/fondos/fondo-nav-claro.jpg");
 }
 
 [data-theme="dark"] {
     --primary: #e9833e;
     --background: #000000;
     --text: gold;
-    --imagen: url("../img/fondo-principal.jpg");
+    --imagen: url("../img/fondos/fondo-principal.jpg");
+    --nav: orange;
+    --fondo-nav: url("../img/fondos/fondo-nav-oscuro.jpg");
 }
 
 .nav{
@@ -25,49 +29,31 @@ body{
     justify-content: center;
 }
 
-/* .nav a:visited {
-    color: red;
-    
-} */
-
 .nav a {
-    color: gold;
+    color: var(--nav);
 }
 
 .body-principal{
     background-image: var(--imagen);
     background-size: cover;
     height: 100vh;
+    background-repeat:space;
 }
-
 
 .header{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-image: url("../img/fondo-nav.jpg");  /*fonde del nav */
+    background-image: var(--fondo-nav);  /*fondo del nav */
     background-size: cover;
 }
 
 .body-ticket{
-    background-image: url("../img/dart-vader-sad.jpg"); /*fonde del nav de ticket */
+    background-image: url("../img/fondos/dart-vader-sad.jpg"); /*fondo del nav de ticket */
 }
 
 .header-ticket{
-    background-image: url("../img/dart-vader-sad.jpg"); /*fonde del main de ticket */
-}
-
-.boton-ordenar:hover{
-    cursor: url("../img/darth_vader_cursor_32.png") 48 48, auto; /*cursor de dart vader */
-}
-
-.lista-opciones{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16vh;
-    width: 20vw;
-    font-size: 3vh;
+    background-image: url("../img/fondos/dart-vader-sad.jpg"); /*fondo del main de ticket */
 }
 
 .activo {
@@ -87,102 +73,14 @@ body{
     height: 6vh;
 }
 
-.texto-lista-productos{
+.lista-opciones{
     display: flex;
+    align-items: center;
     justify-content: center;
-    font-family: 'Orbitron';
-}
-
-.productos-nav{
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-evenly;
-}
-
-.boton-ordenar{
-    border-radius: 5px;
-    font-family: 'Orbitron', sans-serif;
-    color: var(--primary);
-    background-color: var(--background);
-    font-size: 3vh;
-}
-
-.productos-contenedor{
-    display: flex;
-    gap: 2vh;
-    margin-top: 6vh;
-    flex-wrap: wrap;
-    margin-left: 10vh;
-    margin-right: 10vh;
-}
-
-.card-producto{
-    border: 2px solid;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 3vh;
+    gap: 16vh;
     width: 20vw;
-    gap: 0.5vh;
-    border-radius: 8px;
-    background-color: var(--background);
-    height: 55vh;
+    font-size: 3vh;
 }
-
-.card-producto img{
-    padding-top: 15px;
-    width: 15vw;
-    height: 30vh;
-    border-radius: 8px;
-}
-
-.card-producto h5{
-    height: 45px;
-    margin-bottom: 0px;
-    border: 1px solid;
-    margin-top: 0px;
-    /*display: flex;
-    align-items: center;
-    text-align: center;
-*/
-}
-
-.card-producto p {
-    margin-top: 0px;
-    border: 1px solid;
-}
-
-.carrito-producto{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.productos-carrito{
-    display: flex;
-    list-style: none;
-}
-
-.lista-carrito{
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-}
-
-.productos-carrito li{
-    border: 2px solid;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* flex-direction: column; */
-    gap: 26px;
-}
-
-.botones{
-    display: flex;
-}
-
 
 
 .switch {

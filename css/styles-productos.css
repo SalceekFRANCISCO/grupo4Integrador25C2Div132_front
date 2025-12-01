@@ -1,0 +1,70 @@
+.boton-ordenar:hover{
+    cursor: url("../img/fondos/darth_vader_cursor_32.png") 48 48, auto; /*cursor de dart vader */
+}
+
+.texto-lista-productos{
+    display: flex;
+    justify-content: center;
+    font-family: 'Orbitron';
+}
+
+.productos-nav{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-evenly;
+}
+
+.boton-ordenar{
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    background-color: var(--background);
+    font-size: 3vh;
+}
+
+.productos-contenedor{
+    display: flex;
+    gap: 2vh;
+    margin-top: 6vh;
+    flex-wrap: wrap;
+    margin-left: 10vh;
+    margin-right: 10vh;
+}
+
+.card-producto{
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 3vh;
+    width: 20vw;
+    gap: 0.5vh;
+    border-radius: 8px;
+    background-color: var(--background);
+    height: 55vh;
+}
+
+.card-producto img{
+    padding-top: 15px;
+    width: 15vw;
+    height: 30vh;
+    border-radius: 8px;
+}
+
+.card-producto h5{
+    height: 45px;
+    margin-bottom: 0px;
+    border: 1px solid;
+    margin-top: 0px;
+    /*display: flex;
+    align-items: center;
+    text-align: center;
+*/
+}
+
+.card-producto p {
+    margin-top: 0px;
+    border: 1px solid;
+}
+
