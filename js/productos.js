@@ -1,6 +1,14 @@
 let contenedorProductos = document.getElementById("contenedor-productos");
+let contenedorCarrito = document.getElementById("carrito-productos");
+
+console.log(contenedorProductos);
+console.log("***************************");
+console.log(contenedorCarrito);
+
 const url = "http://localhost:3000/api/productos";
+
 let productos = [];
+let carrito = [];
 
 async function obtenerProductos() {
     try {
@@ -23,10 +31,9 @@ function mostrarProductos(array) {
 //    console.table(array);
 //    console.log(array)
     let htmlProducto = "";
-    console.log(array);
 //    ordenarProductos(array, 1);
 
-    array.forEach(producto => {
+    array.forEach((producto) => {
         cantidad = mostrarCantidad(producto);
         htmlProducto += `
         <div class = "card-producto">
@@ -34,9 +41,10 @@ function mostrarProductos(array) {
             <h5>${producto.nombre}</h5>
             <p>$${producto.precio}</p>
             <p>${cantidad}</p>
+            <button onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>
         </div>`;
     });
-    //console.log(htmlProducto);
+    
     contenedorProductos.innerHTML = htmlProducto;
 }
 
@@ -148,8 +156,93 @@ function configurarEventos() {
     filtroSelect.addEventListener('change', actualizarProductosMostrados);
 }   
 
+function agregarAlCarrito(id) {
+    let productoEncontrado = productos.find(producto => producto.id == id)
+    //validar si ya esta qsy
+    carrito.push(productoEncontrado);
+    console.table(carrito);
+    mostrarCarrito();
+    
+    
+}
+
+
+function mostrarCarrito() {
+    let cantidadCarrito = carrito.length;
+
+    if(cantidadCarrito === 0){
+        console.log("carrito vacio");
+        
+    }
+    else{
+        // console.log(carrito);
+        
+        let carritoCargado = "<ul class=listaCarrito> ";
+    
+        carritoCargado +=`<h2 class="carrito-titulo">Carrito</h2>`
+        carrito.forEach((producto) => {
+                carritoCargado +=
+                `<div class="sos">
+                    <li class="bloque-item">
+                    <p class="nombre-item">${producto.nombre} -- $${producto.precio}</p>
+                    </li>
+                </div>`
+        });
+
+        // carritoCargado += `<h3 class="total">Total: $ ${total}</p> </h3>`;
+        carritoCargado += `</ul>`;
+        // carritoCargado += `<button class="botonEliminar" onclick="vaciarCarritoCompleto()">Vaciar el carrito</button>`;
+        // contenedorCarrito.innerHTML = cantidadProductosCarrito;
+        console.log(contenedorCarrito);
+        console.log(carritoCargado);
+        
+        
+        contenedorCarrito.innerHTML = carritoCargado;
+    }
+
+
+}
+
+
+
+
+// esta no debe estar aqui
+// function mostrarCarrito(){
+//     let cantidadCarrito = carritoPersonal.length;
+
+//     if(cantidadCarrito === 0){
+//         vaciarCarrito();
+//     }
+//     else{
+//         let total = calcularTotal(carritoPersonal);
+//         let cantidadProductosCarrito = `<p> Carrito:${cantidadCarrito} Productos</p>`;
+//         let carritoCargado = "<ul class=listaCarrito> ";
+
+//         carritoCargado +=`<h2 class="carrito-titulo">Carrito</h2>`
+//         carritoPersonal.forEach((fruta,indice) => {
+//                 carritoCargado +=
+//                 `<div class="sos">
+//                     <li class="bloque-item">
+//                     <p class="nombre-item">${fruta.nombre}-- $${fruta.precio}</p>
+//                     <button class="botonEliminar" onclick="eliminarFruta(${(indice)})">Eliminar</button>
+//                     </li>
+//                 </div>`
+//         });
+
+//         carritoCargado += `<h3 class="total">Total: $ ${total}</p> </h3>`;
+//         carritoCargado += `<button class="botonEliminar" onclick="vaciarCarritoCompleto()">Vaciar el carrito</button>`;
+//         carritocantidad.innerHTML = cantidadProductosCarrito;
+        
+//         carrito.innerHTML = carritoCargado;
+//     }
+    
+// };
+
+
+
 function init() {
     obtenerProductos();
+    // mostrarCarrito();
 }
 
 init();
