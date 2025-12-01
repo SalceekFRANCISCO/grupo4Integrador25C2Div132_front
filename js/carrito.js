@@ -13,6 +13,8 @@ function obtenerCarrito() {
         `<div class="sos">
             <li class="bloque-item">
             <p class="nombre-item">${producto.nombre} -- $${producto.precio}</p>
+            <button>eliminar</button>
+            <button>cantidad +</button>
             </li>
         </div>`
     });

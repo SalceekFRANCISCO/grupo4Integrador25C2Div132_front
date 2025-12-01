@@ -161,57 +161,7 @@ function agregarAlCarrito(id) {
 
     const carritoLocalS = JSON.stringify(carritoExistente);
     localStorage.setItem("carrito",carritoLocalS);
-
-    // let carrito = JSON.parse(carritoActualJSON);
-
-    // const carritoActualizadoJSON = JSON.stringify(carrito);
-
-    // localStorage.setItem('carrito', carritoActualizadoJSON);
-
-    // localStorage.clear();
-    // console.table(carrito);
-    // mostrarCarrito();
 }
-
-
-// function mostrarCarrito() {
-//     let cantidadCarrito = carrito.length;
-
-//     if(cantidadCarrito === 0){
-//         console.log("carrito vacio");
-        
-//     }
-//     else{
-//         // console.log(carrito);
-        
-//         let carritoCargado = "<ul class=listaCarrito> ";
-    
-//         carritoCargado +=`<h2 class="carrito-titulo">Carrito</h2>`
-//         carrito.forEach((producto) => {
-//                 carritoCargado +=
-//                 `<div class="sos">
-//                     <li class="bloque-item">
-//                     <p class="nombre-item">${producto.nombre} -- $${producto.precio}</p>
-//                     </li>
-//                 </div>`
-//         });
-
-//         // carritoCargado += `<h3 class="total">Total: $ ${total}</p> </h3>`;
-//         carritoCargado += `</ul>`;
-//         // carritoCargado += `<button class="botonEliminar" onclick="vaciarCarritoCompleto()">Vaciar el carrito</button>`;
-//         // contenedorCarrito.innerHTML = cantidadProductosCarrito;
-//         console.log(contenedorCarrito);
-//         console.log(carritoCargado);
-        
-        
-//         contenedorCarrito.innerHTML = carritoCargado;
-//     }
-
-
-// }
-
-
-
 
 // esta no debe estar aqui
 // function mostrarCarrito(){
