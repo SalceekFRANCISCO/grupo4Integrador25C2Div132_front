@@ -4,6 +4,10 @@
     color: gold;
 } */
 
+.header {
+    background-image: url("/img/fondos/fondo-login.jpg");
+}
+
 .lista-opciones a{
     color: #ffe200;
 }
@@ -24,12 +28,12 @@
     gap: 2vh 300vw;
 }
 
-.form-login {
+.div-form {
     height: 10vh;
     display: block;
 }
 
-.form-login > form {
+.form-login {
     display: flex;
     flex-direction: column;
     gap: 2vh;
