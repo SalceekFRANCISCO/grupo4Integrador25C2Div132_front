@@ -35,9 +35,11 @@ body{
 
 .body-principal{
     background-image: var(--imagen);
-    background-size:contain;
-    background-repeat:repeat;
-    height: 160vh;
+    /* background-size:contain; */
+    /* background-repeat:repeat; */
+    background-size: cover;                  /* Escala para cubrir toda la pantalla */
+    background-repeat: no-repeat;            /* ¡EVITA LA REPETICIÓN! */
+    background-attachment: fixed;           /* Fija la imagen, el contenido se desplaza por encima */
 }
 
 .header{
