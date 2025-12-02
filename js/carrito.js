@@ -104,6 +104,8 @@ function vaciarCarrito() {
     let carritoExistente = JSON.parse(carritoActualJSON);
     carritoExistente = [];
     contenedorCarrito.innerHTML = "";
+    const carritoLocalS = JSON.stringify(carritoExistente);
+    localStorage.setItem("carrito",carritoLocalS);
 }
 
 function init() {
