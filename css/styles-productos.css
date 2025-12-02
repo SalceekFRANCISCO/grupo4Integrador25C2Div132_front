@@ -68,3 +68,8 @@
     border: 1px solid;
 }
 
+.section-pre-productos {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}

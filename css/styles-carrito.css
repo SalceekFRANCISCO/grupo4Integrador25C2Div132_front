@@ -18,12 +18,20 @@
 .productos-carrito li{
     border: 2px solid;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    /* flex-direction: column; */
-    gap: 26px;
+    width: 20vw;
+    height: 45vh;
+    flex-wrap: wrap;
+}
+.productos-carrito li div img{
+    width: 15vw;
+    height: 30vh;
 }
 
 .botones{
     display: flex;
+    justify-content: space-around;
+    gap: 1vw;
+    flex-wrap: wrap;
 }

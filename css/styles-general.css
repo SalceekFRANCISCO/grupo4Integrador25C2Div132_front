@@ -10,7 +10,7 @@ body{
     --primary: #2a83d6;
     --background: #ffffff;
     --text: #2a83d6;
-    --imagen: url("../img/fondos/imagen-fondo-claro.jpg");
+    --imagen: url("../img/fondos/fondo-claro-gemini.png");
     --nav: green;
     --fondo-nav: url("../img/fondos/fondo-nav-claro.jpg");
 }
@@ -35,9 +35,8 @@ body{
 
 .body-principal{
     background-image: var(--imagen);
-    background-size: cover;
-    height: 100vh;
-    background-repeat:space;
+    background-size:contain;
+    background-repeat:repeat;
 }
 
 .header{

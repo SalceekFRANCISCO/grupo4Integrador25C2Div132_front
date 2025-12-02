@@ -16,6 +16,7 @@ function mostrarCarrito() {
         `<div class="productos-carrito" >
             <li>
                 <div>
+                    <img src=".${producto.img_url}" alt="${producto.nombre}">
                     <p>${producto.nombre} -- $${producto.precio}</p>
                     </div>
                     <div class="botones">
@@ -89,7 +90,7 @@ function vaciarCarrito() {
     let carrito = obtenerCarrito();
     carrito = [];
     contenedorCarrito.innerHTML = "";
-    guardarCarrito();
+    guardarCarrito(carrito);
 }
 //#endregion
 function init() {

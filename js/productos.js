@@ -15,29 +15,25 @@ async function obtenerProductos() {
         productos = data.payload;
         configurarEventos();
         mostrarProductos(productos);
+        mostrarUsuario();
 
     } catch(error) {
         console.log(error);
 
     }
-
 }
 
 function mostrarProductos(array) {
-    const usuarioStorage = localStorage.getItem("usuario");
-    const usuario = usuarioStorage.toString();
-    console.log(usuario);
-    let htmlProducto = `<h1>Estos son nuestros productos, ${usuario} </h1> <hr>`;
-
+    let htmlProducto = "";
     array.forEach((producto) => {
+        console.log(producto);
         cantidad = mostrarCantidad(producto);
         htmlProducto += `
         <div class = "card-producto">
             <img src=".${producto.img_url}" alt="${producto.nombre}">
             <h5>${producto.nombre}</h5>
             <p>$${producto.precio}</p>
-            <p>${cantidad}</p>
-            <button onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>
+            <p>${cantidad}
         </div>`;
     });
     
@@ -46,11 +42,13 @@ function mostrarProductos(array) {
 
 function mostrarCantidad(producto) {
     if (producto.stock > 5) {
-        return "Disponible";
+        return `Disponible </p>
+            <button onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
     }
     else {
         if (producto.stock > 0) {
-            return "Últimas unidades"
+            return `Últimas unidades</p>
+            <button onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
         }
         else {
             return `AGOTADO`;
@@ -136,7 +134,6 @@ function configurarEventos() {
     let propiedadSelect = document.getElementById("propiedad-select");
     let direccionSelect = document.getElementById("direccion-select");
     let filtroSelect = document.getElementById("propiedad-filtro");
-    console.log(filtroSelect.value);
 
     const actualizarProductosMostrados = () => {
         const propiedad = propiedadSelect.value;
@@ -157,25 +154,39 @@ function agregarAlCarrito(id) {
     const carritoExistente = JSON.parse(carritoActualJSON);
     
     let productoEncontrado = carritoExistente.find(producto => producto.id == id);
-    
     if(productoEncontrado){
-        
-        productoEncontrado.cantidad = (productoEncontrado.cantidad || 0) + 1;
-        productoEncontrado.total = (productoEncontrado.total || productoEncontrado.precio) + productoEncontrado.precio;
+        if (productoEncontrado.stock > 0) {
+            productoEncontrado.stock -= 1;
+            productoEncontrado.cantidad = (productoEncontrado.cantidad || 0) + 1;
+            productoEncontrado.total = (productoEncontrado.total || productoEncontrado.precio) + productoEncontrado.precio;
+        }
+        else {
+            alert("No hay más unidades disponibles de ese producto");
+        }
     }
-    else{
+    else {
         
         let productoNuevo = productos.find(producto => producto.id == id); //esto es para encontrar el producto en el carrito con rows
         
         productoNuevo.cantidad = 1;
         carritoExistente.push(productoNuevo);
         productoNuevo.total = productoNuevo.precio;
-        
+        productoNuevo.stock -= 1;
     }
     
     const carritoLocalS = JSON.stringify(carritoExistente);
     localStorage.setItem("carrito",carritoLocalS);
     // localStorage.clear()
+    mostrarProductos(productos);
+}
+
+function mostrarUsuario() {
+    const usuarioStorage = localStorage.getItem("usuario");
+    let contenedorUsuario = document.getElementById("contenedor-usuario");
+    const usuario = usuarioStorage.toString();
+    console.log(usuario);
+    let htmlUsuario = `<h1>Estos son nuestros productos, ${usuario} </h1>`;
+    contenedorUsuario.innerHTML = htmlUsuario;
 }
 
 function init() {
