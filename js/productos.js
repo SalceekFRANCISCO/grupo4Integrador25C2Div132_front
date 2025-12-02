@@ -24,7 +24,10 @@ async function obtenerProductos() {
 }
 
 function mostrarProductos(array) {
-    let htmlProducto = "";
+    const usuarioStorage = localStorage.getItem("usuario");
+    const usuario = usuarioStorage.toString();
+    console.log(usuario);
+    let htmlProducto = `<h1>Estos son nuestros productos, ${usuario} </h1> <hr>`;
 
     array.forEach((producto) => {
         cantidad = mostrarCantidad(producto);

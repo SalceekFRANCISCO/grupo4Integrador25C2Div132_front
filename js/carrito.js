@@ -1,13 +1,16 @@
 let contenedorCarrito = document.getElementById("carrito-productos");
 
+//#region Funciones del carrito.
 function obtenerCarrito() {
-
     const carritoActualJSON = localStorage.getItem('carrito') || '[]';
+    console.log(carritoActualJSON);
+    const carrito = JSON.parse(carritoActualJSON);
+    return carrito;
+}
 
-    let carrito = JSON.parse(carritoActualJSON);
-
+function mostrarCarrito() {
+    const carrito = obtenerCarrito();
     let carritoCargado = "<ul class=listaCarrito> ";
-
     carrito.forEach((producto, indice) => {
         carritoCargado +=
         `<div class="productos-carrito" >
@@ -32,57 +35,42 @@ function obtenerCarrito() {
     contenedorCarrito.innerHTML = carritoCargado;
 }
 
-function eliminarProducto(indice){
-    // obtener localStorage carrito
-    const carritoLocalStorage = localStorage.getItem('carrito');
-    // transformar el carrito a js object
-    const carritoParseado = JSON.parse(carritoLocalStorage);
-    // buscar el indice y eliminar
-    
-    carritoParseado.splice(indice,1);
-
-    // guardar de nuevo el carrito
-    const carritoLocalS = JSON.stringify(carritoParseado);
+function guardarCarrito(carrito) {
+    const carritoLocalS = JSON.stringify(carrito);
     localStorage.setItem("carrito",carritoLocalS);
-    // mostrar de nuevo el carrito
-    obtenerCarrito();
+}
+//#endregion
+
+//#region Funciones de los productos.
+function eliminarProducto(indice){
+    let carrito = obtenerCarrito();
+    carrito.splice(indice,1);
+    guardarCarrito(carrito);
+    mostrarCarrito();
 }
 
 function sumarProducto(id){
-    // Traer el carrito del storage
-    const carritoActualJSON = localStorage.getItem('carrito') || '[]';
-    // parseo
-    const carritoExistente = JSON.parse(carritoActualJSON);
+    let carrito = obtenerCarrito();
     // buscar el producto
-    let productoEncontrado = carritoExistente.find(producto => producto.id == id);
+    let productoEncontrado = carrito.find(producto => producto.id == id);
     // sumar la cantidad
     if(productoEncontrado){
         productoEncontrado.cantidad += 1;
         productoEncontrado.total = productoEncontrado.cantidad * productoEncontrado.precio;
-        
     }
     console.log(productoEncontrado);
-    // guardar el carrito en el localStorage
-    const carritoLocalS = JSON.stringify(carritoExistente);
-    localStorage.setItem("carrito",carritoLocalS);
-    obtenerCarrito();
+    guardarCarrito(carrito);
+    mostrarCarrito();
 }
 
 function restarProducto(id){
-    // Traer el carrito del storage
-    const carritoActualJSON = localStorage.getItem('carrito') || '[]';
-    // parseo
-    const carritoExistente = JSON.parse(carritoActualJSON);
+    let carrito = obtenerCarrito();
     // buscar el producto
-    let productoEncontrado = carritoExistente.find(producto => producto.id == id);
-
-    let indiceEncontrado = carritoExistente.findIndex(producto => producto.id == id);
+    let productoEncontrado = carrito.find(producto => producto.id == id);
+    let indiceEncontrado = carrito.findIndex(producto => producto.id == id);
     // restar la cantidad
-
-    
     if(productoEncontrado){
         productoEncontrado.cantidad -= 1;
-
         if(productoEncontrado.cantidad <= 0){
             eliminarProducto(indiceEncontrado);
             return;
@@ -93,24 +81,19 @@ function restarProducto(id){
     }
     // validar que no se pueda poner negativa
     // guardar el carrito en el localStorage
-    const carritoLocalS = JSON.stringify(carritoExistente);
-    localStorage.setItem("carrito",carritoLocalS);
-    obtenerCarrito();
-
+    guardarCarrito(carrito);
+    mostrarCarrito()
 }
 
 function vaciarCarrito() {
-    const carritoActualJSON = localStorage.getItem('carrito');
-    let carritoExistente = JSON.parse(carritoActualJSON);
-    carritoExistente = [];
+    let carrito = obtenerCarrito();
+    carrito = [];
     contenedorCarrito.innerHTML = "";
-    const carritoLocalS = JSON.stringify(carritoExistente);
-    localStorage.setItem("carrito",carritoLocalS);
+    guardarCarrito();
 }
-
+//#endregion
 function init() {
-    obtenerCarrito();
-    // mostrarCarrito();
+    mostrarCarrito();
 }
 
 init();
