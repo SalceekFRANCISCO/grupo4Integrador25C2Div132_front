@@ -25,6 +25,10 @@ async function obtenerProductos() {
 
 function mostrarProductos(array) {
     let htmlProducto = "";
+    console.log("mostrarProductos recibe:", array);
+    console.log("tipo:", typeof array);
+    console.log("es array?", Array.isArray(array));
+
     array.forEach((producto) => {
         console.log(producto);
         cantidad = mostrarCantidad(producto);
@@ -43,12 +47,12 @@ function mostrarProductos(array) {
 function mostrarCantidad(producto) {
     if (producto.stock > 5) {
         return `Disponible </p>
-            <button onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
+            <button class="boton-carrito" onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
     }
     else {
         if (producto.stock > 0) {
             return `Últimas unidades</p>
-            <button onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
+            <button class="boton-carrito" onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
         }
         else {
             return `AGOTADO`;

@@ -37,6 +37,7 @@ body{
     background-image: var(--imagen);
     background-size:contain;
     background-repeat:repeat;
+    height: 160vh;
 }
 
 .header{
@@ -57,6 +58,25 @@ body{
 
 .activo {
     color: aqua !important;
+}
+
+.boton-carrito{
+    color: gold;
+    font-family: Orbitron;
+    background-color: #362323cc;
+    border-color: gold;
+    border-radius: 4px;
+    margin-bottom: 1vh;
+    margin-top: -10px;
+}
+
+.boton-carrito:hover {
+  background-color: #1a9bc6;
+  cursor: pointer;
+}
+
+.boton-carrito:active{
+    border-color: rgb(23, 126, 177);
 }
 
 .principal{
