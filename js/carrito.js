@@ -20,10 +20,11 @@ function mostrarCarrito() {
                     <p>${producto.nombre} -- $${producto.precio}</p>
                     </div>
                     <div class="botones">
-                    <button onclick="restarProducto(${(producto.id)})"> - </>
+                    <button class="boton-carrito" onclick="restarProducto(${(producto.id)})"> - </>
                     <button>${producto.cantidad}</button>
-                    <button onclick="sumarProducto(${(producto.id)})" > + </>
-                    <button onclick="eliminarProducto(${(indice)})" >eliminar</button>
+                    <p class="boton-carrito" >${producto.cantidad}</p>
+                    <button class="boton-carrito" onclick="sumarProducto(${(producto.id)})" > + </>
+                    <button class="boton-carrito" onclick="eliminarProducto(${(indice)})" >eliminar</button>
                     <p>TOTAL : ${producto.total}</p>
                 </div>
             </li>
@@ -31,7 +32,7 @@ function mostrarCarrito() {
     });
 
     carritoCargado += `</ul>
-        <button onclick="vaciarCarrito()" >Vaciar carrito</button>`;
+        <button class="boton-carrito" onclick="vaciarCarrito()" >Vaciar carrito</button>`;
     
     contenedorCarrito.innerHTML = carritoCargado;
 }
