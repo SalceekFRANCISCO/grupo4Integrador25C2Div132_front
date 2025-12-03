@@ -1,3 +1,5 @@
+@import url("styles-general.css");
+
 /* body{
     margin: 0px;
     font-family: 'Orbitron', sans-serif;
@@ -47,10 +49,10 @@
     width: 20vw;
     height: 8vh;
     font-size: 36px;
-    color: #ffe200;
-    background-color: #060606;
+    color: var(--text);
+    background-color: var(--background);
     border-radius: 10px;
     font-family: 'Orbitron';
     font-size: 5vh;
-    border-color: gold;
+    border-color: var(--text)
 }

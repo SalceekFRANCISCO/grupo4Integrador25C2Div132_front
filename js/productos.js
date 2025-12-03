@@ -146,11 +146,16 @@ function agregarAlCarrito(id) {
 
 function mostrarUsuario() {
     const usuarioStorage = localStorage.getItem("usuario");
-    let contenedorUsuario = document.getElementById("contenedor-usuario");
-    const usuario = usuarioStorage.toString();
-    console.log(usuario);
-    let htmlUsuario = `<h1>Estos son nuestros productos, ${usuario} </h1>`;
-    contenedorUsuario.innerHTML = htmlUsuario;
+    if(usuarioStorage === null) {
+        window.location.href = "login.html"
+    }
+    else {
+        let contenedorUsuario = document.getElementById("contenedor-usuario");
+        const usuario = usuarioStorage.toString();
+        console.log(usuario);
+        let htmlUsuario = `<h1>Estos son nuestros productos, ${usuario} </h1>`;
+        contenedorUsuario.innerHTML = htmlUsuario;
+    }
 }
 
 function init() {

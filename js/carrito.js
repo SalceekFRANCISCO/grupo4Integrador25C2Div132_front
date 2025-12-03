@@ -44,6 +44,7 @@ function mostrarCarrito() {
         <h2 class="total-carrito">Total de carrito: $${acumulador}</>`;
     
     contenedorCarrito.innerHTML = carritoCargado;
+    mostrarUsuario();
 }
 
 function guardarCarrito(carrito) {
@@ -88,6 +89,7 @@ function restarProducto(id){
     // restar la cantidad
     if(productoEncontrado){
         productoEncontrado.cantidad -= 1;
+        productoEncontrado.stock += 1;
         if(productoEncontrado.cantidad <= 0){
             eliminarProducto(indiceEncontrado);
             return;
@@ -104,7 +106,7 @@ function restarProducto(id){
 
 function vaciarCarrito() {
     let carrito = obtenerCarrito();
-    if (carrito.lenght === 0) {
+    if (carrito.lenght != 0) {
         carrito = [];
         contenedorCarrito.innerHTML = "";
         guardarCarrito(carrito);
@@ -113,6 +115,21 @@ function vaciarCarrito() {
         alert("El carrito ya está vacío.");
     }
 }
+
+function mostrarUsuario() {
+    const usuarioStorage = localStorage.getItem("usuario");
+    if(usuarioStorage === null) {
+        window.location.href = "login.html"
+    }
+    else {
+        let contenedorUsuario = document.getElementById("contenedor-usuario");
+        const usuario = usuarioStorage.toString();
+        console.log(usuario);
+        let htmlUsuario = `<h1>${usuario}, esta es su commpra actual </h1>`;
+        contenedorUsuario.innerHTML = htmlUsuario;
+    }
+}
+
 //#endregion
 function init() {
     mostrarCarrito();
