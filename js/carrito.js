@@ -41,10 +41,20 @@ function mostrarCarrito() {
 
     carritoCargado += `</ul>
         <button class="boton-carrito" onclick="vaciarCarrito()" >Vaciar carrito</button>
+        <button class="boton-carrito" onclick="finalizarCompra()" >Finalizar Compra</button>
         <h2 class="total-carrito">Total de carrito: $${acumulador}</>`;
     
     contenedorCarrito.innerHTML = carritoCargado;
     mostrarUsuario();
+}
+
+function finalizarCompra(totalCompra) {
+    alert('vas a ticket');
+    const totalParse = JSON.stringify(totalCompra);
+    localStorage.setItem("total",totalParse);
+
+    window.location.href = "ticket.html";
+    
 }
 
 function guardarCarrito(carrito) {
@@ -131,6 +141,7 @@ function mostrarUsuario() {
 }
 
 //#endregion
+
 function init() {
     mostrarCarrito();
 }
