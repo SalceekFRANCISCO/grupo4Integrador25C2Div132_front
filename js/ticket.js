@@ -1,7 +1,11 @@
-boton_imprimir.addEventListener("click", imrpimirTicket);
+let boton_imprimir = document.getElementById("boton-imprimir");
+boton_imprimir.addEventListener("click", imprimirTicket);
 
-function imrpimirTicket() {
+function imprimirTicket() {
+    let carritoActualJSON = localStorage.getItem("carrito");
+    const carrito = JSON.parse(carritoActualJSON);
     console.table(carrito);
+    console.log(carrito);
     let idProductos = [];
     const {jsPDF} = window.jspdf;
     const doc = new jsPDF();
@@ -10,9 +14,7 @@ function imrpimirTicket() {
     doc.text("Llama-ticket de compra:", 20, y);
     y+= 20;
     doc.setFontSize(12);
-    doc.save("ticket.pdf");
 
-    let carrito = localStorage.getItem("carrito");
     carrito.forEach(producto => {
         idProductos.push(producto.id);
         doc.text(`${producto.nombre} - $${producto.precio}`, 40, y);
@@ -23,5 +25,41 @@ function imrpimirTicket() {
     const precioTotal = carrito.reduce((total, producto) => total + parseInt(producto.precio), 9);
     y += 5;
     doc.setFontSize(15);
-    doc.text(`Total: ${precioTotal}`, 20, y);
+    doc.text(`Total: $${precioTotal}`, 20, y);
+    doc.save("ticket.pdf");
+
+    registrarVenta(precioTotal, idProductos);
+}
+
+async function registrarVenta(precioTotal, idProductos) {
+    const fecha = new Date().toLocaleString("sv-SE", {hour12: false}).replace("T", " ");
+    let nombreUsuario = localStorage.getItem("usuario");
+
+    const data = {
+        fecha: fecha,
+        nombreUsuario: nombreUsuario,
+        precio: precioCarrito,
+        productos: idProductos
+    }
+
+    const response = await fetch("http://localhost:3000/api/ventas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+        localStorage.removeItem("usuario");
+        localStorage.removeItem("carrito");
+        alert("Venta creada con éxito");
+        window.location.href = "login.html";
+    }
+    else {
+        alert("Surgió un error con la venta. Intente nuevamentem más tarde.");
+    }
+
 }
