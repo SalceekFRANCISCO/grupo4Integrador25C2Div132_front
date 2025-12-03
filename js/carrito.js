@@ -11,28 +11,31 @@ function obtenerCarrito() {
 function mostrarCarrito() {
     const carrito = obtenerCarrito();
     let carritoCargado = "<ul class=listaCarrito> ";
+    let acumulador = 0;
     carrito.forEach((producto, indice) => {
         carritoCargado +=
         `<div class="productos-carrito" >
             <li>
                 <div>
                     <img src=".${producto.img_url}" alt="${producto.nombre}">
-                    <p>${producto.nombre} -- $${producto.precio}</p>
+                    <p> ${producto.nombre} </p>
+                    <p> Precio unitario: $${producto.precio}</p>
                     </div>
                     <div class="botones">
                     <button class="boton-carrito" onclick="restarProducto(${(producto.id)})"> - </>
-                    <button>${producto.cantidad}</button>
-                    <p class="boton-carrito" >${producto.cantidad}</p>
                     <button class="boton-carrito" onclick="sumarProducto(${(producto.id)})" > + </>
-                    <button class="boton-carrito" onclick="eliminarProducto(${(indice)})" >eliminar</button>
-                    <p>TOTAL : ${producto.total}</p>
+                    <button class="boton-carrito" onclick="eliminarProducto(${(indice)})"> Eliminar </button>
+                    <h4> Cantidad de productos: ${producto.cantidad} </h4>
+                    <p> Subtotal: $${producto.total} </p>
                 </div>
             </li>
         </div>`
+        acumulador += producto.total;
     });
 
     carritoCargado += `</ul>
-        <button class="boton-carrito" onclick="vaciarCarrito()" >Vaciar carrito</button>`;
+        <button class="boton-carrito" onclick="vaciarCarrito()" >Vaciar carrito</button>
+        <h2>Total de carrito: $${acumulador}</>`;
     
     contenedorCarrito.innerHTML = carritoCargado;
 }
@@ -57,8 +60,14 @@ function sumarProducto(id){
     let productoEncontrado = carrito.find(producto => producto.id == id);
     // sumar la cantidad
     if(productoEncontrado){
-        productoEncontrado.cantidad += 1;
-        productoEncontrado.total = productoEncontrado.cantidad * productoEncontrado.precio;
+        if (productoEncontrado.stock > 0) {
+            productoEncontrado.stock -= 1;
+            productoEncontrado.cantidad += 1;
+            productoEncontrado.total = productoEncontrado.cantidad * productoEncontrado.precio;
+        }
+    else {
+        alert("No hay más stock de ese producto.");
+    }
     }
     console.log(productoEncontrado);
     guardarCarrito(carrito);
@@ -89,9 +98,14 @@ function restarProducto(id){
 
 function vaciarCarrito() {
     let carrito = obtenerCarrito();
-    carrito = [];
-    contenedorCarrito.innerHTML = "";
-    guardarCarrito(carrito);
+    if (carrito.lenght === 0) {
+        carrito = [];
+        contenedorCarrito.innerHTML = "";
+        guardarCarrito(carrito);
+    }
+    else {
+        alert("El carrito ya está vacío.");
+    }
 }
 //#endregion
 function init() {

@@ -9,9 +9,13 @@ const setTheme = (theme) => {
 }
 
 setTheme(localStorage.getItem("theme") || preferedColorScheme);
+// Le paso el valor de tema de localStorage o, en caso de que no exista, le paso el tema por defecto que usa en su computadora.
 
 const cambiarTema = () => {
     let switchTheme = localStorage.getItem("theme") === "dark" ? "light" : "dark";
+    //Esto es cuando aprieta el botón. Le hago una validación. Si el valor actual es dark, pasa la página a light.
+    // Si el valor actual no es dark, pasa la página a dark.
+    // Esto es para cambiar cada vez que clickeas
     setTheme(switchTheme);
 }
 
