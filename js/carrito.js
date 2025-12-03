@@ -16,17 +16,23 @@ function mostrarCarrito() {
         carritoCargado +=
         `<div class="productos-carrito" >
             <li>
-                <div>
+                <div class="clase">
                     <img src=".${producto.img_url}" alt="${producto.nombre}">
-                    <p> ${producto.nombre} </p>
-                    <p> Precio unitario: $${producto.precio}</p>
-                    </div>
+                        <div class=""info-producto"">
+                            <p class="nombre-producto"> ${producto.nombre}</p>
+                            <p class="precio-producto"> $${producto.precio} </p>
+                        </div>
+                </div>
+                <div class="puto">
                     <div class="botones">
-                    <button class="boton-carrito" onclick="restarProducto(${(producto.id)})"> - </>
                     <button class="boton-carrito" onclick="sumarProducto(${(producto.id)})" > + </>
-                    <button class="boton-carrito" onclick="eliminarProducto(${(indice)})"> Eliminar </button>
-                    <h4> Cantidad de productos: ${producto.cantidad} </h4>
-                    <p> Subtotal: $${producto.total} </p>
+                        <button class="boton-carrito" onclick="restarProducto(${(producto.id)})"> - </>
+                        <button class="boton-carrito" onclick="eliminarProducto(${(indice)})"> Eliminar </button>
+                    </div>
+                    <div class="datos-carrito">
+                        <h4> Cantidad del Producto: ${producto.cantidad} </h4>
+                        <p> Subtotal Producto: $${producto.total} </p>
+                    </div>
                 </div>
             </li>
         </div>`
@@ -35,7 +41,7 @@ function mostrarCarrito() {
 
     carritoCargado += `</ul>
         <button class="boton-carrito" onclick="vaciarCarrito()" >Vaciar carrito</button>
-        <h2>Total de carrito: $${acumulador}</>`;
+        <h2 class="total-carrito">Total de carrito: $${acumulador}</>`;
     
     contenedorCarrito.innerHTML = carritoCargado;
 }

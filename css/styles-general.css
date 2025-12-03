@@ -8,7 +8,7 @@ body{
 
 [data-theme="light"] {
     --primary: #3700ff;
-    --background: #ffffff;
+    --background: #cdc9c9c4;
     --text: #2a83d6;
     --imagen: url("../img/fondos/imagen-fondo-claro.jpg");
     --nav: green;
@@ -38,7 +38,7 @@ body{
     background-size: cover;                  /* Escala para cubrir toda la pantalla */
     background-repeat: no-repeat;            /* ¡EVITA LA REPETICIÓN! */
     background-attachment: fixed;           /* Fija la imagen, el contenido se desplaza por encima */
-    height: 240vh;
+    min-height: 100vh;
 }
 
 .header{
@@ -69,6 +69,8 @@ body{
     border-radius: 4px;
     margin-bottom: 1vh;
     margin-top: -10px;
+    /* height: 5vh; */
+    /* width: 10vh; */
 }
 
 .boton-carrito:hover {
@@ -101,7 +103,6 @@ body{
     width: 20vw;
     font-size: 3vh;
 }
-
 
 .switch {
     position: relative;
