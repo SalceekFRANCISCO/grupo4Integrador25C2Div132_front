@@ -10,8 +10,9 @@ function obtenerCarrito() {
 
 function mostrarCarrito() {
     const carrito = obtenerCarrito();
-    let carritoCargado = "<ul class=listaCarrito> ";
     let acumulador = 0;
+    let carritoCargado = "<ul class=listaCarrito> ";
+
     carrito.forEach((producto, indice) => {
         carritoCargado +=
         `<div class="productos-carrito" >
@@ -48,13 +49,8 @@ function mostrarCarrito() {
     mostrarUsuario();
 }
 
-function finalizarCompra(totalCompra) {
-    alert('vas a ticket');
-    const totalParse = JSON.stringify(totalCompra);
-    localStorage.setItem("total",totalParse);
-
+function finalizarCompra() {
     window.location.href = "ticket.html";
-    
 }
 
 function guardarCarrito(carrito) {

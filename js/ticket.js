@@ -1,5 +1,7 @@
 let boton_imprimir = document.getElementById("boton-imprimir");
 boton_imprimir.addEventListener("click", imprimirTicket);
+const urlVentas = "http://localHost:3000/api/ventas" 
+
 
 function imprimirTicket() {
     let carritoActualJSON = localStorage.getItem("carrito");
@@ -11,7 +13,7 @@ function imprimirTicket() {
     const doc = new jsPDF();
     let y = 20;
     doc.setFontSize(18);
-    doc.text("Llama-ticket de compra:", 20, y);
+    doc.text("Ticket de compra:", 20, y);
     y+= 20;
     doc.setFontSize(12);
 
@@ -22,7 +24,7 @@ function imprimirTicket() {
         y += 10;
         
     });
-    const precioTotal = carrito.reduce((total, producto) => total + parseInt(producto.precio), 9);
+    const precioTotal = carrito.reduce((total, producto) => total + parseInt(producto.precio) * parseInt(producto.cantidad), 0);
     y += 5;
     doc.setFontSize(15);
     doc.text(`Total: $${precioTotal}`, 20, y);
@@ -38,11 +40,12 @@ async function registrarVenta(precioTotal, idProductos) {
     const data = {
         fecha: fecha,
         nombreUsuario: nombreUsuario,
-        precio: precioCarrito,
+        precio: precioTotal,
         productos: idProductos
     }
+    
 
-    const response = await fetch("http://localhost:3000/api/ventas", {
+    const response = await fetch(urlVentas, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
