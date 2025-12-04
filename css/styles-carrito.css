@@ -73,6 +73,7 @@
 .nombre-producto, .precio-producto {
     margin: 0;
     padding: 0;
+    width: 14vw;
 }
 
 .precio-producto{

@@ -103,12 +103,14 @@ function buscarProductos(array){
 }
 
 function configurarEventos() {
+    // obtener id de los html
     let propiedadSelect = document.getElementById("propiedad-select");
     let direccionSelect = document.getElementById("direccion-select");
     let filtroSelect = document.getElementById("propiedad-filtro");
-    let barraBusqueda = document.querySelector('#barraBusqueda')
-
-
+    let barraBusqueda = document.querySelector('#barraBusqueda');
+    
+    
+    // obtener id de los html
     const actualizarProductosMostrados = () => {
         const propiedad = propiedadSelect.value;
         const direccion = direccionSelect.value;
@@ -119,6 +121,7 @@ function configurarEventos() {
         productosAcomodados = buscarProductos(productosAcomodados);
         mostrarProductos(productosAcomodados);
     }
+
     propiedadSelect.addEventListener('change', actualizarProductosMostrados);
     direccionSelect.addEventListener('change', actualizarProductosMostrados);
     filtroSelect.addEventListener('change', actualizarProductosMostrados);
