@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla de ticket de la tienda de Star Wars</title>
     <link rel="stylesheet" href="css/styles-general.css">
+    <link rel="stylesheet" href="css/styles-ticket.css">
     <link rel="icon" type="image/png" href="img/logo-tienda.png">
     <script src="js/temas.js" defer></script>
     <script src="js/ticket.js" defer></script>
@@ -33,10 +34,16 @@
                 <span class="slider"></span>
             </label>
             <div>
-                <h3>Importante: las entregas pueden demorar entre 15 días y un mes.</h3>
-                <h4>Cuando haya terminado de cargar el carrito, confirme su compra con el botón que se encuentra debajo.</h4>
-                <button class="boton-carrito" id="boton-imprimir">TERMINAR COMPRA</button>
-            </div>    
+                <div class="contenedor-info">
+                    <h2>Importante: las entregas pueden demorar entre 15 días y un mes.</h2>
+                    <h3>Cuando haya terminado de cargar el carrito, confirme su compra con el botón que se encuentra al fondo de la página.</h3>
+                    <h3>Estos son los productos que va a a comprar:</h3>
+                </div>
+                <div id="contenedor-compra-final"></div>
+            </div>
+            <div class="contenedor-info">
+                <button class="boton-general" id="boton-imprimir">TERMINAR COMPRA</button>
+            </div>
         </section>
     </main>
 </body>

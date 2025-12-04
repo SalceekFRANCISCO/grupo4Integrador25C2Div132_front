@@ -45,12 +45,12 @@ function mostrarProductos(array) {
 function mostrarCantidad(producto) {
     if (producto.stock > 5) {
         return `Disponible </p>
-            <button class="boton-carrito" onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
+            <button class="boton-general" onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
     }
     else {
         if (producto.stock > 0) {
             return `Últimas unidades</p>
-            <button class="boton-carrito" onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
+            <button class="boton-general" onclick="agregarAlCarrito(${(producto.id)})"> Agregar carrito</button>`
         }
         else {
             return `AGOTADO`;
@@ -95,10 +95,19 @@ function filtrarProductos(array, propiedad) {
     return productosFiltrados;
 }
 
+function buscarProductos(array){
+    let valorBusqueda = barraBusqueda.value;
+
+    let busquedaProductos = array.filter(producto => producto.nombre.includes(valorBusqueda));
+    return busquedaProductos;
+}
+
 function configurarEventos() {
     let propiedadSelect = document.getElementById("propiedad-select");
     let direccionSelect = document.getElementById("direccion-select");
     let filtroSelect = document.getElementById("propiedad-filtro");
+    let barraBusqueda = document.querySelector('#barraBusqueda')
+
 
     const actualizarProductosMostrados = () => {
         const propiedad = propiedadSelect.value;
@@ -107,11 +116,13 @@ function configurarEventos() {
         let productosAcomodados = [...productos];
         productosAcomodados = filtrarProductos(productosAcomodados, filtro);
         productosAcomodados = ordenarProductos(productosAcomodados, propiedad, direccion);
+        productosAcomodados = buscarProductos(productosAcomodados);
         mostrarProductos(productosAcomodados);
     }
     propiedadSelect.addEventListener('change', actualizarProductosMostrados);
     direccionSelect.addEventListener('change', actualizarProductosMostrados);
     filtroSelect.addEventListener('change', actualizarProductosMostrados);
+    barraBusqueda.addEventListener("keyup", actualizarProductosMostrados);
 }   
 
 function agregarAlCarrito(id) {
@@ -141,7 +152,6 @@ function agregarAlCarrito(id) {
     
     const carritoLocalS = JSON.stringify(carritoExistente);
     localStorage.setItem("carrito",carritoLocalS);
-    mostrarProductos(productos);
 }
 
 function mostrarUsuario() {

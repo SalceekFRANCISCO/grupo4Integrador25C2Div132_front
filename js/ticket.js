@@ -2,6 +2,36 @@ let boton_imprimir = document.getElementById("boton-imprimir");
 boton_imprimir.addEventListener("click", imprimirTicket);
 const urlVentas = "http://localHost:3000/api/ventas" 
 
+function mostrarCompraFinal() {
+    const carritoActualJSON = localStorage.getItem('carrito') || '[]';
+    const carrito = JSON.parse(carritoActualJSON);
+    console.table(carrito);
+    let compraFinal = document.getElementById("contenedor-compra-final");
+    let compraFinalHTML = "";
+    if (carrito.lenght === 0) {
+        compraFinalHTML = "<h1>Error: no se ha cargado ningún producto en el carrito.<h1>";
+    }
+    else {
+        let contador = 1;
+        let totalCompra = 0;
+        carrito.forEach(producto => {
+            let totalProducto = producto.precio * producto.cantidad;
+            compraFinalHTML += `<div class="info-producto">
+            <h3> Producto número ${contador}: <h3>
+            <h4> Nombre: ${producto.nombre} <h4>
+            <h4> Precio: $${producto.precio} <h4>
+            <h4> Cantidad: ${producto.cantidad} <h4>
+            <h4> Subotal: $${totalProducto} <h4>
+            </div>`;
+            totalCompra += totalProducto;
+            contador += 1;
+        });
+        compraFinalHTML += `<div class="contenedor-info">
+                                <h2> Total de la compra: $${totalCompra} </h2>
+                                </div>`
+    }
+    compraFinal.innerHTML = compraFinalHTML;
+}
 
 function imprimirTicket() {
     let carritoActualJSON = localStorage.getItem("carrito");
@@ -62,7 +92,13 @@ async function registrarVenta(precioTotal, idProductos) {
         window.location.href = "login.html";
     }
     else {
-        alert("Surgió un error con la venta. Intente nuevamentem más tarde.");
+        alert("Surgió un error con la venta. Intente nuevamente más tarde.");
     }
 
 }
+
+function init() {
+    mostrarCompraFinal();
+};
+
+init();

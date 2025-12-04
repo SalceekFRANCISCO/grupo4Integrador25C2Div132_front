@@ -11,6 +11,12 @@
     list-style: none;
 }
 
+.boton-carrito {
+    height: 5vh;
+    width: 10vw;
+    margin: 1vh;
+}
+
 .lista-carrito{
     display: flex;
     flex-direction: column;

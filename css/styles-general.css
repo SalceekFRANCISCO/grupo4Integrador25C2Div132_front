@@ -10,19 +10,22 @@ body{
 /*    --primary: #3700ff;*/
     --primary: #ffffff;
     --background: #cdc9c9c4;
-    --text: #2a83d6;
+    --text: #0b5ebd;
     --imagen: url("../img/fondos/imagen-fondo-claro.jpg");
     --nav: green;
     --fondo-nav: url("../img/fondos/fondo-nav-claro.jpg");
+    --fondo-ticket: url("../img/fondos/imagen-fondo-claro02.jpg");
+    --fondo-login: url("../img/fondos/fondo-nav-claro.jpg")
 }
 
 [data-theme="dark"] {
-    --primary: #e9833e;
+    --primary: orange;
     --background: #000000;
     --text: gold;
     --imagen: url("../img/fondos/fondo-principal.jpg");
     --nav: orange;
     --fondo-nav: url("../img/fondos/fondo-nav-oscuro.jpg");
+    --fondo-ticket: url("../img/fondos/dath-vader-sad.png");
 }
 
 .nav{
@@ -50,19 +53,11 @@ body{
     background-size: cover;
 }
 
-.body-ticket{
-    background-image: url("../img/fondos/dath-vader-sad.png"); /*fondo del nav de ticket */
-}
-
-.header-ticket{
-    background-image: url("../img/fondos/dart-vader-sad.jpg"); /*fondo del main de ticket */
-}
-
 .activo {
     color: aqua !important;
 }
 
-.boton-carrito{
+.boton-general{
     color: var(--text);
     font-family: Orbitron;
     background-color: var(--background);
@@ -74,12 +69,12 @@ body{
     /* width: 10vh; */
 }
 
-.boton-carrito:hover {
+.boton-general:hover {
     background-color: #1a9bc6;
     cursor: pointer;
 }
 
-.boton-carrito:active{
+.boton-general:active{
     border-color: rgb(23, 126, 177);
 }
 

@@ -73,7 +73,7 @@
 
 .section-pre-productos {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -85,8 +85,29 @@ footer{
 }
 
 .boton-subir{
+    position: fixed;
     border-radius: 5px;
     border: none;
     height: 5vh;
-    width: 5vh;
+    width: 2vw;
+    bottom: 20px;
+    right: 20px;
+    
+}
+
+.boton-subir a {
+    font-size: 4vh;
+}
+
+.barraBusqueda{
+    height: 4vh;
+    width: 20vw;
+    font-size: 2vh;
+    background-color: var(--background);
+    color: var(--text);
+    border-radius: 4px;
+}
+
+.barraBusqueda[type="text"]::placeholder {
+    color: var(--primary);
 }
