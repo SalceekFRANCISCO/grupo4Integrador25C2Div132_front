@@ -40,7 +40,7 @@ async function registrarVenta(precioTotal, idProductos) {
     const data = {
         fecha: fecha,
         nombreUsuario: nombreUsuario,
-        precio: precioTotal,
+        total: precioTotal,
         productos: idProductos
     }
     
