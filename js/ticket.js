@@ -19,7 +19,7 @@ function imprimirTicket() {
 
     carrito.forEach(producto => {
         idProductos.push(producto.id);
-        doc.text(`${producto.nombre} - $${producto.precio}`, 40, y);
+        doc.text(`${producto.nombre} - $${producto.precio} x ${producto.cantidad}`, 40, y);
 
         y += 10;
         
