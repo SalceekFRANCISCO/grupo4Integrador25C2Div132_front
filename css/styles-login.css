@@ -1,11 +1,5 @@
 @import url("styles-general.css");
 
-/* body{
-    margin: 0px;
-    font-family: 'Orbitron', sans-serif;
-    color: gold;
-} */
-
 .lista-opciones a{
     color: #ffe200;
 }
@@ -54,5 +48,10 @@
     border-radius: 10px;
     font-family: 'Orbitron';
     font-size: 5vh;
-    border-color: var(--text)
+    border-color: var(--text);
+}
+
+.texto-admin {
+    margin-top: 7vh;
+    margin-bottom: 0px;
 }

@@ -1,6 +1,7 @@
 let boton_login = document.getElementById("form-login");
-
-console.log(boton_login);
+const urlLogin = "http://localHost:3000/login";
+let botonAdmin = document.getElementById("boton-iniciar-sesion");
+botonAdmin.addEventListener("click",iniciarSesion); 
 
 boton_login.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -16,3 +17,7 @@ boton_login.addEventListener("submit", function (event) {
 
     window.location.href = "productos.html"
 });
+
+function iniciarSesion(){
+    window.location.href = urlLogin;
+}

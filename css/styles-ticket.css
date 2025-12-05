@@ -17,6 +17,10 @@
     gap: 0px 0px 0px 0px;
 }
 
+.info-producto h4 {
+    width: 15vw;
+}
+
 .boton-general {
     height: 6vh;
     width: 10vw;
@@ -26,5 +30,11 @@
 .contenedor-info {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.titulo-compra {
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
 }
