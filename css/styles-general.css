@@ -14,7 +14,7 @@ body{
     --imagen: url("../img/fondos/imagen-fondo-claro.jpg");
     --nav: green;
     --fondo-nav: url("../img/fondos/fondo-nav-claro.jpg");
-    --fondo-ticket: url("../img/fondos/imagen-fondo-claro02.jpg");
+    --fondo-ticket: url("../img/fondos/imagen-fondo-claro02.png");
     --fondo-login: url("../img/fondos/fondo-nav-claro.jpg")
 }
 

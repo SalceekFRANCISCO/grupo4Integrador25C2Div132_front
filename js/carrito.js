@@ -17,14 +17,14 @@ function mostrarCarrito() {
         carritoCargado +=
         `<div class="productos-carrito" >
             <li>
-                <div class="clase">
+                <div class="contenedor-info-carrito">
                     <img src=".${producto.img_url}" alt="${producto.nombre}">
                         <div class=""info-producto"">
                             <p class="nombre-producto"> ${producto.nombre}</p>
                             <p class="precio-producto"> $${producto.precio} </p>
                         </div>
                 </div>
-                <div class="puto">
+                <div class="contenedor-botones-carrito">
                     <div class="botones">
                     <button class="boton-general" onclick="sumarProducto(${(producto.id)})" > + </>
                         <button class="boton-general" onclick="restarProducto(${(producto.id)})"> - </>
@@ -42,9 +42,13 @@ function mostrarCarrito() {
 
     carritoCargado += `</ul>
         <button class="boton-general boton-carrito" onclick="vaciarCarrito()" >Vaciar carrito</button>
-        <h2 class="total-carrito">Total de carrito: $${acumulador}</>
-        <br>
-        <button class="boton-general boton-carrito" onclick="finalizarCompra()" >Finalizar Compra</button>`;
+        <div>
+            <h2 class="total-carrito">Total de carrito: $${acumulador}</>
+        </div>
+        <div>
+            <button class="boton-general boton-carrito" onclick="finalizarCompra()" >Finalizar Compra</button>
+        </div>
+    </div>` 
     
     contenedorCarrito.innerHTML = carritoCargado;
     mostrarUsuario();
@@ -132,7 +136,7 @@ function mostrarUsuario() {
         let contenedorUsuario = document.getElementById("contenedor-usuario");
         const usuario = usuarioStorage.toString();
         console.log(usuario);
-        let htmlUsuario = `<h1>${usuario}, esta es su commpra actual </h1>`;
+        let htmlUsuario = `<h1>${usuario}, esta es su compra actual </h1>`;
         contenedorUsuario.innerHTML = htmlUsuario;
     }
 }
