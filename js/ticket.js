@@ -2,6 +2,34 @@ let boton_imprimir = document.getElementById("boton-imprimir");
 boton_imprimir.addEventListener("click", imprimirTicket);
 const urlVentas = "http://localHost:3000/api/ventas" 
 
+const urlLogin = "http://localHost:3000/login" 
+
+let puto = document.getElementById("puto")
+puto.addEventListener("click",iniciarSesion)
+
+
+
+function iniciarSesion(){
+    // const response = await fetch(urlVentas, {
+    //     method: "GET",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    // });
+
+    // const result = await response.json();
+
+    // if (response.ok) {
+    //     console.log("todo ok");
+        
+    // }
+    // else {
+    //     alert("Surgió un error con la venta. Intente nuevamente más tarde.");
+    // }
+
+    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+}
+
 function mostrarCompraFinal() {
     const carritoActualJSON = localStorage.getItem('carrito') || '[]';
     const carrito = JSON.parse(carritoActualJSON);
