@@ -11,7 +11,7 @@ Para administradores deberan (si desean) apretar el boton que los redirije hacia
 
 ## 2) Elegir un producto
 
-![prueba](img\explicacion\productos.png)
+![prueba](img/explicacion/productos.png)
 
 Podes elegir el producto que deseas y agregarlo al carrito
 
@@ -20,11 +20,11 @@ Podes elegir el producto que deseas y agregarlo al carrito
 La seccion de productos tiene opciones de filtrado para mayor comodidad al elegir.
 
 #### Filtrar por Tipo
-![prueba](img\explicacion\filtrar-tipo.png)
+![prueba](img/explicacion/filtrar-tipo.png)
 
 #### Nombre, Precio y Stock.
-![prueba](img\explicacion\tipo-de-orden.png)
+![prueba](img/explicacion/tipo-de-orden.png)
 
 #### Ordenar por Ascendente y Descendiente dependiendo el tipo de filtro que hayas elegido.
-![prueba](img\explicacion\ordernar.png)
+![prueba](img/explicacion/ordernar.png)
 
