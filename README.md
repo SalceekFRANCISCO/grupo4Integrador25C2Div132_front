@@ -28,3 +28,9 @@ La seccion de productos tiene opciones de filtrado para mayor comodidad al elegi
 #### Ordenar por Ascendente y Descendiente dependiendo el tipo de filtro que hayas elegido.
 ![prueba](img/explicacion/ordernar.png)
 
+
+## 3) Productos carrito
+## 3) Carrito normal
+## 3) Carrito finalizado
+## 3) ticket
+## 3) venta exitosa
