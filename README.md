@@ -2,7 +2,7 @@
 
 ## 1) Acceder a la pagina web
 
-![prueba](/img\explicacion\login.png)
+![prueba](img/explicacion/login.png)
 
 Para usuarios normales deberan ingresar su nombre y luego de darle al boton comenzar
 
